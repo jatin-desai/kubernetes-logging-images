@@ -1,3 +1,5 @@
+# added elasticsearch plugin
+
 FROM fluent/fluentd:v0.12.33
 MAINTAINER Jatin Desai <jatin14@gmail.com>
 USER root
