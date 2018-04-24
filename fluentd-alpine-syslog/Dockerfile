@@ -32,15 +32,11 @@ COPY ./conf/kubernetes.conf /fluentd/etc/
 # Copy plugins
 COPY plugins /fluentd/plugins/
 COPY entrypoint.sh /fluentd/entrypoint.sh
+RUN chmod +x /fluentd/entrypoint.sh
 
 # Environment variables
 ENV FLUENTD_OPT=""
 ENV FLUENTD_CONF="fluent.conf"
-
-# jemalloc is memory optimization only available for td-agent
-# td-agent is provided and QA'ed by treasuredata as rpm/deb/.. package
-# -> td-agent (stable) vs fluentd (edge)
-#ENV LD_PRELOAD="/usr/lib/libjemalloc.so.2"
 
 # Run Fluentd
 CMD ["/fluentd/entrypoint.sh"]
